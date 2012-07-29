@@ -1,0 +1,21 @@
+<div class="fields question_answer_wrapper">
+  <div>
+    <div class="remove_q orange_border_background_link"><%= link_to_remove_fields "X", f %></div>
+    <%= f.label :content, "Question" %>
+    <%= f.select(:q_type, [['Multiple Choice(Only One Answer)','1'],['Multiple Choice(Multiple Answers)','2']], {}, {:class => 'q_type_select'}) %>
+      <!-- ['Rating 1-10','3'],['Text Box','4'] -->
+    <br />
+    <%= f.text_area :content, :class => "question_box" %>
+  </div>
+  <%= f.fields_for :answers do |builder| %>
+    <%= render 'answer_fields', :f => builder %>
+  <% end %>
+  
+  <% if f.object.q_type == '3' || f.object.q_type == '4' %>
+    <div class="add_answer_div" style="display:none;">
+  <% else %>
+    <div class="add_answer_div">
+  <% end %>
+      <%= link_to_add_fields "Add Answer", f, :answers %>
+    </div>
+</div>

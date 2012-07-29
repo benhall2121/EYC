@@ -1,0 +1,55 @@
+<% if current_user && current_user.id == @survey.user_id %>
+  <%= link_to 'Edit', edit_survey_path(@survey) %> |
+  <%= link_to 'Take Survey', TakeASurvey_path(:id => @survey) %>
+<% else %>
+  <%= link_to 'Take Survey', TakeASurvey_path(:id => @survey) %>
+<% end %>
+
+
+<div class="show_survey_wrapper">
+  <div class="survey_title_wrapper">
+    <div class="survey_title"><%= @survey.title %></div>
+    <div class="spread_the_word">
+      Let's go viral:<br />
+      <%= link_to image_tag('/images/share_facebook16x16.png', :class => "facebook_header_img"), '#', :onclick => 'share("facebook","' + TakeASurvey_path(@survey.id) + '");' %>
+      <%= link_to image_tag('/images/share_twitter16x16.png', :class => "twitter_header_img"), '#', :onclick => 'share("twitter","' + TakeASurvey_path(@survey.id) + '");' %>
+    </div>
+  </div>
+  
+  <% @survey.questions.each do |q| %>
+    <div class="show_question_wrapper">
+      <div class="show_question">Q: <%= q.content %></div>
+      <div class="show_answers_wrapper" id="chart_<%= q.id %>">
+      <% @new_sr = @survey_response.select{|x| x.question_id == q.id } %>
+      
+        <!-- 1 = Multiple Choice(Only One Answer), 2 = Multiple Choice(Multiple Answers), 3 = Rating 1-10, 4 = Text Box -->
+        <% if q.q_type == '1' %>
+          <% @new_sr.group_by(&:content).each do |content, nsr| %>
+            <%= hidden_field_tag "#{content}",nsr.count, :class => 'answers_hidden_fields' %>
+          <% end %>
+        <% elsif q.q_type == '2' %>
+          <% @new_sr.group_by(&:content).each do |content, nsr| %>
+            <%= hidden_field_tag "#{content}",nsr.count, :class => 'answers_hidden_fields' %>
+          <% end %>
+        <% elsif q.q_type == '3' %>
+          <% @new_sr.group_by(&:content).each do |content, nsr| %>
+            <%= hidden_field_tag "#{content}",nsr.count, :class => 'answers_hidden_fields' %>
+          <% end %>
+        <% elsif q.q_type == '4' %>
+          <% @new_sr.each do |nsr| %>
+            <%= nsr.content %><br />
+  	  <% end %>
+        <% end %>
+        
+        <!-- The chart div is not needed for text fields -->
+        <% if q.q_type != '4' %>
+          <!--Div that will hold the pie chart-->
+          <div id="chart_div_<%= q.id %>" class="chart_div"></div>
+        <% end %>
+        
+      </div>
+    </div>
+  <% end %>
+  
+</div>
+

@@ -1,0 +1,14 @@
+<div class="fields answer_fields">
+  <table>
+  	<tr>
+      <td><%= f.label :content, "Answer:" %></td>
+      <td><%= f.text_field :content %></td> 
+    </tr>
+  	<tr>
+      <td><%= f.label :content, "Score:" %></td>
+      <td><%= f.text_field :score %></td> 
+    </tr>
+   </table>
+
+  <div class="remove_a orange_border_background_link"><%= link_to_remove_fields "X", f %></div>
+</div>

@@ -1,0 +1,68 @@
+<% i = 0 %>
+<%= form_tag take_survey_create_path(), :method => :put do %>
+  <div class="show_survey_wrapper">
+  <div class="survey_title">
+    <%= @survey.title %>
+  </div>
+
+  <% for questions in @survey.questions %>
+     
+    <div class="show_question_wrapper">
+      <div class="show_question"><%= questions.content %></div>
+      <div class="show_answers_wrapper">
+      
+        <% if questions.q_type == '1' %>
+          <%= fields_for "survey_responses[#{i}]" do |f| %>
+            <%= f.hidden_field :question_id, :value => questions.id %>
+            <%= f.hidden_field :survey_id, :value => @survey.id %>
+            <% questions.answers.each do |mco| %>
+              <%= f.radio_button :answer_id, mco.id %><%= mco.content %><br/>
+            <% end %>
+            <% i+=1 %>
+          <% end %>
+        <% elsif questions.q_type == '2' %>
+          
+          <% questions.answers.each do |mco| %>
+            <%= fields_for "survey_responses[#{i}]" do |f| %>
+              <%= f.hidden_field :question_id, :value => questions.id %>
+              <%= f.hidden_field :survey_id, :value => @survey.id %>
+              <!-- check_box(object_name, method, options = {}, checked_value = "1", unchecked_value = "0") -->
+              <%= f.check_box :answer_id, {}, mco.id, "" %><%= mco.content %><br />
+              <% i+=1 %>
+            <% end %>
+          <% end %>
+          
+        <% elsif questions.q_type == '3' %>
+          <%= fields_for "survey_responses[#{i}]" do |f| %>
+            <%= f.hidden_field :question_id, :value => questions.id %>
+            <%= f.hidden_field :survey_id, :value => @survey.id %>
+            <% loopCount = 1%>
+            <% while loopCount < 11 %>
+              <%= f.radio_button :content, loopCount %><%= loopCount %>
+              <% loopCount += 1 %>
+            <% end %>
+            <% i+=1 %>
+          <% end %>
+            
+        <% elsif questions.q_type == '4' %>
+          <%= fields_for "survey_responses[#{i}]" do |f| %>
+            <%= f.hidden_field :question_id, :value => questions.id %>
+            <%= f.hidden_field :survey_id, :value => @survey.id %>
+            <%= f.text_area :content, :class => 'answer_box' %>
+            <% i+=1 %>
+          <% end %>
+        <% end %>
+
+    
+       
+      </div>
+    </div> 
+  <% end %>
+
+  
+  <div><%= submit_tag "Submit Survey" %></div>
+  
+  </div>
+<% end %>
+
+

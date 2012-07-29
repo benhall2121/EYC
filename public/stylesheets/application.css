@@ -1,0 +1,193 @@
+html, body {
+   padding: 0;
+   margin: 0;
+   background: #FFF;
+   height: 100%;
+}
+
+input[type='text'], input[type='password']{
+  height:30px;
+}
+
+textarea{
+  width: 98.7%;
+  resize: none;
+}
+
+a, a:visited{
+  color:#000;
+  text-decoration: none;
+}
+
+a:hover{
+  color:#ccc;
+}
+
+input[type='text'], input[type='password'], textarea{
+  font-size:13px;
+  border:1px solid #C9C9C9;
+  padding: 2px 5px;
+  outline: none;
+  
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -khtml-border-radius: 8px;
+  border-radius: 8px;
+}
+
+.main_wrapper{
+  width:80%;
+  margin:0 auto;
+}
+
+.main_header_wrapper{
+
+  margin: 10px 0;
+  font-size:12px;
+
+  border:1px solid #636363;
+  padding:20px;
+  
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -khtml-border-radius: 8px;
+  border-radius: 8px;
+}
+
+.header_left{
+  width:49%;
+  display:inline-block;
+}
+
+.header_right{
+  width:49%;
+  display:inline-block;
+  text-align:right;
+  float:right;
+}
+
+.main_content_wrapper{
+
+}
+
+.flash_wrapper{
+  text-align:center;
+}
+
+.page_header{
+  font-size:40px;
+  font-weight:bold;
+  margin-right:10px;
+}
+
+.main_footer_wrapper{
+  border-top:1px solid #666;
+  border-bottom:1px solid #666;
+  padding:5px;
+  margin:15px 0;
+}
+
+
+
+/******************************     Surveys Page     ******************************/
+
+.survey_wrapper, .show_survey_wrapper{
+  border:1px solid #636363;
+  padding:20px;
+  
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -khtml-border-radius: 8px;
+  border-radius: 8px;
+}
+
+
+/***** Survey Questions *****/
+.question_answer_wrapper, .show_question_wrapper{
+  border:1px dashed #DEDEDE;
+  padding:10px;
+  margin-top:10px;
+  text-align:left;
+  
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -khtml-border-radius: 4px;
+  border-radius: 4px;
+}
+
+.remove_q{
+  display:inline-block;
+  float:right;
+  font-size:11px;
+  padding:2px 4px;
+}
+
+.question_box, .answer_box{
+  height:50px;  
+}
+
+.add_question_div{
+  margin-top:3px; 
+}
+/***** End Survey Questions *****/
+
+
+/***** Survey Answers *****/
+
+.answer_fields{
+  margin-bottom:3px;  
+}
+
+.remove_a{
+  display:inline-block;
+  font-size:11px;
+  padding:2px 4px;
+}
+
+.show_answers_wrapper{
+  padding-left:15px;  
+}
+
+/***** End Survey Answers *****/
+
+.facebook_header_img, .twitter_header_img{ vertical-align:middle; }
+
+.survey_title{
+  font-size:30px;
+  display:inline-block;
+  margin:0 5px;
+}
+
+.spread_the_word{
+  font-size:10px;
+  display:inline-block;
+  margin:0 5px;
+}
+
+.chart_div{
+  display:inline-block; 
+}
+
+/******************************     End Surveys Page     ******************************/
+
+
+
+
+/******************************     Survey Answers Page     ******************************/
+
+.survey_answer_wrapper{
+  text-align:center;
+}
+
+.survey_answer{
+  font-size:50px;
+  font-weight:bold;
+}
+
+/******************************     Survey Answers Page END     ******************************/
+
+
+
+
+
+

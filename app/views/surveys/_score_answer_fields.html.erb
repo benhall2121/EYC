@@ -1,0 +1,11 @@
+
+
+<div class="fields question_answer_wrapper">
+  <div>
+    <div class="remove_q orange_border_background_link"><%= link_to_remove_fields "X", f %></div>
+    <%= f.label :content, "Answer:" %>
+    <%= f.text_area :content, :class => "question_box" %>
+    <br />
+    Starting Range: <%= f.text_field :start_range %> End Range: <%= f.text_field :end_range %>
+  </div>
+</div>

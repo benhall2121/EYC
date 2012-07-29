@@ -1,0 +1,19 @@
+<div class="page_header_wrapper">
+  <span class="page_header">Surveys</span>
+  <%= link_to 'New Survey', new_survey_path if !current_user.nil? %>
+</div>
+
+<table>
+  <tr>
+    <th>Survey Title</th>
+    <th></th>
+  </tr>
+
+<% @surveys.each do |survey| %>
+  <tr>
+    <td><%= link_to survey.title, TakeASurvey_path(survey) %></td>
+    <td><%= link_to 'Survey Stats', survey %></td>
+  </tr>
+<% end %>
+</table>
+

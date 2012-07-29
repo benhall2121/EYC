@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Energize Your City</title>
+    <%= stylesheet_link_tag "application" %>
+    <%= javascript_include_tag 'jquery', 'application' %>
+    <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js", "https://www.google.com/jsapi" %>
+    <%= csrf_meta_tag %>
+
+
+  <script type="text/javascript">
+
+    //**********************   Google Charts   ********************** 
+    
+    // Load the Visualization API and the piechart package.
+    google.load('visualization', '1.0', {'packages':['corechart']});
+  
+    //**********************   End Google Charts   **********************
+    
+  </script>
+
+
+</head>
+<body>
+
+<div class="main_wrapper">
+
+  <div class="main_header_wrapper">
+    <div class="header_left">
+      <%= link_to 'Home', root_path %>
+    </div>
+
+    <div class="header_right">
+      <% if current_user %>
+        Logged in as <%= current_user.email %>.
+        <%= link_to "Log out", log_out_path %>
+      <% else %>
+        <%= link_to "Sign up", sign_up_path %> | 
+        <%= link_to "log in", log_in_path %>
+      <% end %>
+        | 
+        <%= link_to "Surveys", surveys_path() %>
+    </div>
+  </div>
+
+  
+
+  <div class="main_content_wrapper">
+
+    <% if !flash.nil? %>
+      <div class="flash_wrapper">
+        <% flash.each do |name, msg| %>
+          <%= content_tag :div, msg, :id => "flash_#{name}" %>
+        <% end %>
+      </div>
+    <% end %>
+
+    <%= yield %>
+  </div>
+
+  <div class="main_footer_wrapper">
+
+  </div>
+
+</div>
+
+</body>
+</html>

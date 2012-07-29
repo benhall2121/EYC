@@ -1,0 +1,34 @@
+
+<%= form_for @survey do |f| %>
+  <% if @survey.errors.any? %>
+    <div id="error_explanation">
+      <% @survey.errors.full_messages.each do |msg| %>
+        <%= msg %><br/>
+      <% end %>
+    </div>
+  <% end %>
+  
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+  
+  <div>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <%= f.fields_for :questions do |builder| %>
+    <%= render "question_fields", :f => builder %>
+  <% end %>
+  <div class='add_question_div'><%= link_to_add_fields "Add Question", f, :questions %></div>
+
+  <%= f.fields_for :score_answers do |sa| %>
+    <%= render "score_answer_fields", :f => sa %>
+  <% end %>
+
+  <div class="page_header_wrapper">
+    <span class="page_header">Score Answers</span>
+  </div>
+
+  <div class='add_score_answer_div'><%= link_to_add_fields "Add Score Answer", f, :score_answers %></div>
+
+  <div><%= f.submit "Submit" %></div>
+<% end %>
+
