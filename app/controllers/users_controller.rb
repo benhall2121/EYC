@@ -4,9 +4,11 @@ class UsersController < ApplicationController
   def home
     @survey = Survey.find(:last)
     
-    @survey.questions.count.times do
-      @rs = SurveyResponse.new
-    end
+    if !@survey.nil?
+      @survey.questions.count.times do
+        @rs = SurveyResponse.new
+      end
+    end 
   end
 
   # GET /users

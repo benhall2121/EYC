@@ -36,22 +36,26 @@ input[type='text'], input[type='password'], textarea{
 }
 
 .main_wrapper{
-  width:80%;
+  width:960px;
   margin:0 auto;
 }
 
-.main_header_wrapper{
+.logo_wrapper{
+  margin-bottom:-4px;
+}
 
-  margin: 10px 0;
+.main_header_wrapper{
+  margin: 0 0 10px 0;
   font-size:12px;
 
   border:1px solid #636363;
-  padding:20px;
-  
-  -moz-border-radius: 8px;
-  -webkit-border-radius: 8px;
-  -khtml-border-radius: 8px;
-  border-radius: 8px;
+  padding:9px;
+}
+
+.main_header_wrapper a{
+
+  padding:5px;
+  margin:5px -3px 5px 0;
 }
 
 .header_left{
@@ -81,8 +85,6 @@ input[type='text'], input[type='password'], textarea{
 }
 
 .main_footer_wrapper{
-  border-top:1px solid #666;
-  border-bottom:1px solid #666;
   padding:5px;
   margin:15px 0;
 }

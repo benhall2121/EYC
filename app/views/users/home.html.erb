@@ -1,1 +1,6 @@
-<%= render "/surveys/take_survey" %>
+
+<% if !@survey.nil? %>
+  <%= render "/surveys/take_survey" %>
+<% else %>
+  No Surveys
+<% end %>

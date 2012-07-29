@@ -25,9 +25,17 @@
 
 <div class="main_wrapper">
 
+  <div class="logo_wrapper">
+    <%= link_to image_tag('eyclogo.png'), root_path %>
+  </div>
+
   <div class="main_header_wrapper">
     <div class="header_left">
-      <%= link_to 'Home', root_path %>
+
+      <%= link_to 'About', 'http://energizeyourcity.com/about/' %>
+      <%= link_to 'Leadership', 'http://energizeyourcity.com/leadership/' %>
+      <%= link_to 'Blog', 'http://energizeyourcity.com/blog/' %>
+
     </div>
 
     <div class="header_right">
@@ -35,10 +43,9 @@
         Logged in as <%= current_user.email %>.
         <%= link_to "Log out", log_out_path %>
       <% else %>
-        <%= link_to "Sign up", sign_up_path %> | 
-        <%= link_to "log in", log_in_path %>
+        <%= link_to "Sign up", sign_up_path %> 
+        <%= link_to "Log in", log_in_path %>
       <% end %>
-        | 
         <%= link_to "Surveys", surveys_path() %>
     </div>
   </div>
